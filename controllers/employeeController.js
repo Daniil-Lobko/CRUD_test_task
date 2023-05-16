@@ -3,13 +3,12 @@ const Task = require('../models/taskModel');
 const logger = require('../logger');
 
 async function createEmployee(req, res) {
-    console.log(req.body.firstName)
     try {
         const employeeData = req.body;
         const employee = await Employee.create(employeeData);
         res.status(201).json(employee);
     } catch (error) {
-        console.error('Ошибка при создании сотрудника:', error);
+        logger.error('Ошибка при создании сотрудника:', error);
         res.status(500).json({error: 'Ошибка сервера'});
     }
 }
@@ -34,7 +33,7 @@ async function setEmployeeTask(req, res) {
 
         res.sendStatus(200);
     } catch (err) {
-        console.error('Ошибка при назначении задачи сотруднику:', err);
+        logger.error('Ошибка при назначении задачи сотруднику:', err);
         res.status(500).json({error: 'Ошибка сервера'});
     }
 }
@@ -62,7 +61,7 @@ async function completeEmployeeTask(req, res) {
 
         res.sendStatus(200);
     } catch (err) {
-        console.error('Ошибка при завершении задачи сотрудником:', err);
+        logger.error('Ошибка при завершении задачи сотрудником:', err);
         res.status(500).json({error: 'Ошибка сервера'});
     }
 }
