@@ -11,7 +11,7 @@ async function createTask(req, res) {
         res.status(201).json(task);
     } catch (err) {
         logger.error('Ошибка при создании задачи:', err);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({error: 'Ошибка сервера'});
     }
 };
 
@@ -22,23 +22,23 @@ async function getAllTask(req, res) {
         res.json(tasks);
     } catch (err) {
         logger.error('Ошибка при получении списка задач:', err);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({error: 'Ошибка сервера'});
     }
 };
 
 async function getOneTask(req, res) {
     try {
-        const { id } = req.params;
+        const {id} = req.params;
         const task = await Task.findById(id);
         if (!task) {
             logger.error('Задача не найдена');
-            return res.status(404).json({ error: 'Задача не найдена' });
+            return res.status(404).json({error: 'Задача не найдена'});
         }
         logger.info(`Данные задачи с ID ${id} успешно получены`);
         res.json(task);
     } catch (err) {
         logger.error('Ошибка при получении данных задачи:', err);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({error: 'Ошибка сервера'});
     }
 };
 

@@ -14,7 +14,6 @@ const port = 3003;
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         logger.info('Connected to MongoDB');
-        // Start the server
         app.listen(port, () => {
             logger.info(`Server is running on port ${port}`);
         });
